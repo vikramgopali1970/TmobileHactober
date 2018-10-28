@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="tmobilefeApp" style="height:850px !important;">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/izitoast/dist/css/iziToast.min.css" crossorigin="anonymous">
+    <!-- Add your site or application content here -->
+    <!--<div class="header">-->
+      <!--<div class="navbar navbar-default" role="navigation">-->
+        <!--<div class="container">-->
+          <!--<div class="navbar-header">-->
+
+            <!--<a class="navbar-brand" href="#/">tmobilefe</a>-->
+          <!--</div>-->
+
+          <!--<div class="collapse">-->
+
+            <!--<ul class="nav navbar-nav">-->
+              <!--<li class="active"><a href="#/">Home</a></li>-->
+              <!--<li><a ng-href="#/about">About</a></li>-->
+              <!--<li><a ng-href="#/">Contact</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <ui-view style="height: inherit;" ></ui-view>
+
+    <div id="footer-nav-bar" ng-controller="RouterCtrl">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #222222; padding:0 0 0 0">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <li ng-repeat="item in navItems" ui-sref={{routes[$index]}} class="nav-item active bottom-tabs" ng-class="{'active-nav-bar':$index==indexSelected}" ng-click="getSection($index)">
+            <a class="nav-link bottom-tabs-items">{{item}} <span class="sr-only">(current)</span></a>
+          </li>
+        </div>
+      </nav>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script src="https://unpkg.com/izitoast/dist/js/iziToast.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.20/stateEvents.min.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/Bill.js"></script>
+        <script src="scripts/controllers/Account.js"></script>
+        <script src="scripts/controllers/Router.js"></script>
+        <script src="scripts/controllers/More.js"></script>
+        <script src="scripts/controllers/Shop.js"></script>
+        <script src="scripts/controllers/chat.js"></script>
+        <script src="scripts/services/Events.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
