@@ -2,7 +2,7 @@
 
 
 class Events{
-  constructor($state){
+  constructor($state,$http){
     this.$state = $state;
     // this.moment = new moment();
     this.count = 0;
@@ -40,12 +40,15 @@ class Events{
       'durationPercentage' : [],
       'visitCount':[],
       'visitCountPercentage':[],
+      'eventSeq':[],
       'issuePrediction':{'priority1':'','priority2':''}
-    }
+    };
+    this.eventSeq = [];
+    this.$http = $http;
   }
 
   getTime(state){
-
+    this.eventSeq.push(state);
     let timeStamp = new moment().unix();
     // console.log("yayyy",state,timeStamp);
     this.eventArr.push({"state":state,"timeStamp":timeStamp});
@@ -76,7 +79,7 @@ class Events{
   }
 
   getReport(state){
-    this.report['issuePrediction'].priority1 = state;
+    this.report['issuePrediction'].priority1 = this.eventSeq[this.eventSeq.length-1];
     this.report.timeDuration = this.duration;
     this.report.durationPercentage= this.durationPercent;
     this.report.visitCount= this.visitCount;
@@ -84,8 +87,14 @@ class Events{
     let maxVisited = Math.max.apply(null,Object.values(this.visitCountPercent));
     let maxtimeSpent = Math.max.apply(null,Object.values(this.durationPercent));
     let indVal = (maxVisited > maxtimeSpent)?Object.values(this.visitCountPercent).indexOf(maxVisited.toFixed(2)):Object.values(this.durationPercent).indexOf(maxtimeSpent.toFixed(2));
-    this.report['issuePrediction'].priority2 = Object.keys(this.duration)[indVal];
+    this.report['issuePrediction'].priority2 = (Object.keys(this.duration)[indVal] === 'home')?'promotions':Object.keys(this.duration)[indVal];
+    this.report['eventSeq'] = this.eventSeq;
     console.log(this.report);
+    this.$http.post('http://localhost:3000/sendReport',{'data':this.report}).then(result=>{
+      console.log("result is ",result);
+    }).catch(error=>{
+      console.log("error is ",error);
+    });
   }
 
 
@@ -96,6 +105,6 @@ class Events{
 angular
   .module('tmobilefeApp')
   .service('Events',
-    function($state){
-      return new Events($state);
+    function($state,$http){
+      return new Events($state,$http);
     });

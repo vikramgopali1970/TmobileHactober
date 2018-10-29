@@ -21,6 +21,35 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/izitoast/dist/css/iziToast.min.css" crossorigin="anonymous">
     <!-- Add your site or application content here -->
+    <!--<nav class="navbar navbar-light bg-light">-->
+      <!--<div style="float: right">-->
+        <!--<a class="navbar-brand" >Navbar</a>-->
+      <!--</div>-->
+    <!--</nav>-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="RouterCtrl">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <!--<span class="navbar-toggler-icon"></span>-->
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link"><span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"></a>
+          </li>
+        </ul>
+        <div>
+          <span ng-click="chatwithUs()" style="margin-right: 15px;cursor: pointer" class="navbar-text ">Chat With Us</span>
+          <span ng-click="callUs()" style="margin-right: 15px;cursor: pointer" class="navbar-text ">Call Us</span>
+        </div>
+
+      </div>
+    </nav>
     <!--<div class="header">-->
       <!--<div class="navbar navbar-default" role="navigation">-->
         <!--<div class="container">-->

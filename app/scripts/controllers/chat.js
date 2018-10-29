@@ -15,6 +15,13 @@ angular.module('tmobilefeApp')
       'Karma'
     ];
 
+    setTimeout(()=>{
+      $('#myModal').modal('toggle');
+    },1000);
+    // $('#myModal').modal('show');
+    setTimeout(()=>{
+      $('#myModal').modal('toggle');
+    },5000);
 
 
     $scope.selectIssue = (index)=>{

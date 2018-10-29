@@ -8,7 +8,7 @@
  * Controller of the tmobilefeApp
  */
 angular.module('tmobilefeApp')
-  .controller('RouterCtrl', function ($scope,$window) {
+  .controller('RouterCtrl', function ($scope,$window, Events, $rootScope, $state, $http) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -27,6 +27,17 @@ angular.module('tmobilefeApp')
       console.log(index);
       $scope.indexSelected = index;
       $scope.routeName = $scope.routes[index];
+    };
+
+    $scope.chatwithUs = ()=>{
+      clearTimeout($rootScope.timer);
+      Events.getReport();
+      $state.go('chat');
+    };
+
+    $scope.callUs = ()=>{
+      clearTimeout($rootScope.timer);
+      Events.getReport();
     };
 
     console.log($scope.routes.indexOf("bills"),stateUrl);
